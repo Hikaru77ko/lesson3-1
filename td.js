@@ -1,42 +1,41 @@
 'use strict';
 
 const addContent = document.getElementById('output');
-const addText = document.getElementById('textinput');
-const addButton =document.getElementById('triger');
+const addText = document.getElementById('text_input');
+const addButton =document.getElementById('trigger');
 let num = 0;
 
-
-addButton.addEventListener('click',() => {
-  const add_td_id = document.createElement('td');
-  const add_td_text = document.createElement('td');
-  const add_td_working = document.createElement('td');
-  const add_td_delete = document.createElement('td');
-  const add_tr = document.createElement('tr');
-  const add_text_value = addText.value;
+addButton.addEventListener('click', () => {
+  const addTdId = document.createElement('td');
+  const addTdText = document.createElement('td');
+  const addTdWorking = document.createElement('td');
+  const addTdDelete = document.createElement('td');
+  const addTr = document.createElement('tr');
+  const addTextValue = addText.value;
 
   const resetText = () => {
     addText.value = '';
     addText.focus();
   };
 
-  add_td_id.textContent = num++;
-  add_tr.appendChild(add_td_id);
+  addTdId.textContent = num++;
+  addTr.appendChild(addTdId);
 
-  add_td_text.setAttribute('align','center');
-  add_td_text.textContent = add_text_value;
-  add_tr.appendChild(add_td_text);
+  addTdText.setAttribute('align','center');
+  addTdText.textContent = addTextValue;
+  addTr.appendChild(addTdText);
 
   const workingButton = document.createElement('button');
   workingButton.textContent = '作業中';
-  add_td_working.appendChild(workingButton);
-  add_tr.appendChild(add_td_working);
+  addTdWorking.appendChild(workingButton);
+  addTr.appendChild(addTdWorking);
 
   const deleteButton = document.createElement('button');
   deleteButton.textContent = '削除';
-  add_td_delete.appendChild(deleteButton);
-  add_tr.appendChild(add_td_delete);
+  addTdDelete.appendChild(deleteButton);
+  addTr.appendChild(addTdDelete);
 
-  addContent.appendChild(add_tr);
+  addContent.appendChild(addTr);
 
   resetText();
 });
