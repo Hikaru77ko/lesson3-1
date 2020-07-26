@@ -3,7 +3,14 @@
 const addContent = document.getElementById('output');
 const addText = document.getElementById('text_input');
 const addButton =document.getElementById('trigger');
-let num = 0;
+const tasks = [];
+let idNum = 0;
+let indexNum = 0;
+
+const resetText = () => {
+  addText.value = '';
+  addText.focus();
+};
 
 addButton.addEventListener('click', () => {
   const addTdId = document.createElement('td');
@@ -12,17 +19,19 @@ addButton.addEventListener('click', () => {
   const addTdDelete = document.createElement('td');
   const addTr = document.createElement('tr');
   const addTextValue = addText.value;
+  const task = {};
+  const nextIdNum = idNum++;
+  const nextIndexNum = indexNum++;
 
-  const resetText = () => {
-    addText.value = '';
-    addText.focus();
-  };
+  task.id = nextIdNum;
+  task.text = addTextValue;
+  tasks.push(task);
 
-  addTdId.textContent = num++;
+  addTdId.textContent = tasks[nextIndexNum].id;
   addTr.appendChild(addTdId);
 
+  addTdText.textContent = tasks[nextIndexNum].text;
   addTdText.setAttribute('align','center');
-  addTdText.textContent = addTextValue;
   addTr.appendChild(addTdText);
 
   const workingButton = document.createElement('button');
